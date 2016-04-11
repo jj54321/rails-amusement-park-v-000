@@ -1,0 +1,15 @@
+ <%= @attraction.name %></p>
+<%= @attraction.users.count %></p>
+ <%= @attraction.tickets %></p>
+ <%= @attraction.min_height %> inches</p>
+ <%= @attraction.nausea_rating %></p>
+<%= @attraction.happiness_rating %></p>
+ <%= form_tag(rides_new_path, method: "post") do %>
+  <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
+   <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
+   <%= submit_tag("Go on this ride") %>
+<% end %>
+
+<%  if current_user.admin %>
+  <%=link_to "Edit Attraction", edit_attraction_path  %>
+<% end %>
